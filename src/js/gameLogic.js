@@ -7,12 +7,11 @@ export default class GameLogic {
     this.goblin.src = img;
     this.currentPos = 0;
     this.score = 0;
-    this.loseGoblin = 0;
+    this.lose = 0;
     this.timeoutID = null;
     this.topScore = window.localStorage.getItem('topScore');
 
-    const arr = document.querySelectorAll('.cell');
-    arr.forEach((cell) => cell.addEventListener('click', (ev) => {
+    document.querySelectorAll('.cell').forEach((cell) => cell.addEventListener('click', (ev) => {
       if (this.timeoutID !== null) {
         clearTimeout(this.timeoutID);
         if (ev.target === this.goblin) {
@@ -42,12 +41,13 @@ export default class GameLogic {
     }
     this.score = 0;
     document.getElementById(`cell${this.currentPos}`).removeChild(this.goblin);
-    document.getElementById('btn').classList.toggl('visiable');
+    document.getElementById('btn').classList.toggle('visiable');
     this.timeoutID = null;
   }
 
   losePoint() {
     this.lose += 1;
+    console.log(this.lose);
     if (this.lose === 5) {
       this.endGame();
     } else {
@@ -57,17 +57,15 @@ export default class GameLogic {
   }
 
   tryClick() {
-    this.drawGobin();
+    this.drawGoblin();
     this.timeoutID = window.setTimeout(() => {
       this.losePoint();
     }, 1000);
   }
 
   drawGoblin() {
-    if (this.timeoutID !== null) {
-      document.getElementById(`cell${this.currentPos}`).removeChild(this.goblin);
-      this.currentPos = this.generateRandPos();
-      document.getElementById(`cell${this.currentPos}`).insertAdjacentHTML('afterbegin', this.goblin);
-    }
+    if (this.timeoutID !== null) document.getElementById(`cell${this.currentPos}`).removeChild(this.goblin);
+    this.currentPos = this.generateRandPos();
+    document.getElementById(`cell${this.currentPos}`).insertAdjacentElement('afterbegin', this.goblin);
   }
 }

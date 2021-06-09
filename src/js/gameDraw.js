@@ -5,7 +5,7 @@ export default class Gamedraw {
 
   draw() {
     const container = document.createElement('div');
-    container.className = 'container';
+    container.id = 'container';
     document.body.appendChild(container);
     let n = 0;
     for (let i = 0; i < this.boardSize; i += 1) {

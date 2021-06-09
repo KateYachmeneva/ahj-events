@@ -20,7 +20,7 @@ export default class Game {
     this.topScore = document.createElement('p');
     this.topScore.innerHTML = `Рекорд: <span id = "top-score">${localScore}</span>`;
     this.currentScore = document.createElement('p');
-    this.currentScore.innerHTML = 'Рекорд: <span id = "current-score">0</span>';
+    this.currentScore.innerHTML = 'Текущий счет: <span id = "current-score">0</span>';
 
     this.scores.insertAdjacentElement('afterbegin', this.topScore);
     this.scores.insertAdjacentElement('afterbegin', this.currentScore);

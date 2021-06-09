@@ -1,4 +1,4 @@
 import Game from './gameGoblin';
 
-const gameGoblin = new Game(4);
-gameGoblin.init();
+const gameG = new Game(4);
+gameG.startGame();
